@@ -101,28 +101,26 @@ public class A3Q6 {
         new Thing(wien, 5, 1);
         new Thing(wien, 5, 1);
 
-        for (;;) {
+        wien.showThingCounts(true);
 
-            krazy.move();
+        krazy.move();
+
+        while (krazy.canPickThing()) {
             krazy.turnLeft();
-            int counter = 0;
-            while (krazy.canPickThing()) {
-                krazy.pickThing();
-                counter++;
-            }
+            krazy.pickAllThings();
 
-            while (counter>2) {
+            while(krazy.countThingsInBackpack() > 0) {
                 krazy.move();
                 krazy.putThing();
-                
             }
-            krazy.turnLeft();
-            krazy.turnLeft();
+            krazy.turnAround();
 
-            while (krazy.canPickThing()) {
+            while(krazy.canPickThing()) {
                 krazy.move();
-
             }
+        
+        krazy.turnLeft();
+        krazy.move();
         }
     }
 }
